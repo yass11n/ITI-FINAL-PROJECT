@@ -4,6 +4,8 @@ const EventForm = ({ date, addEvent, editEvent, deleteEvent, editingEvent, close
   const [title, setTitle] = useState(editingEvent ? editingEvent.title : '');
   const [reminder, setReminder] = useState(editingEvent ? editingEvent.reminder : '');
 
+  console.log(editingEvent);
+  
   useEffect(() => {
     if (editingEvent) {
       setTitle(editingEvent.title);

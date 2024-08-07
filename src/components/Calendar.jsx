@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CalendarHeader from "./CalendarHeader";
 import Day from "./Day";
 import Modal from "./Modal";
@@ -11,7 +11,19 @@ const Calendar = () => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [events, setEvents] = useState([]);
   const [showModal, setShowModal] = useState(false);
+
   const [editingEvent, setEditingEvent] = useState(null);
+
+  useEffect(() => {
+    async function fetchEvents() {
+      const res = await fetch("http://localhost:5000/events");
+      const ev = await res.json();
+
+      setEvents(ev);
+    }
+
+    fetchEvents();
+  }, []);
 
   const startOfMonth = new Date(
     currentMonth.getFullYear(),
@@ -44,7 +56,19 @@ const Calendar = () => {
   }
 
   const handleAddEvent = (event) => {
-    setEvents([...events, event]);
+    fetch("http://localhost:5000/events", {
+      method: "POST",
+      body: JSON.stringify(event),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => {
+        setEvents([...events, event]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const handleEditEvent = (updatedEvent) => {
@@ -109,7 +133,12 @@ const Calendar = () => {
 
           {/* Events section */}
           <div className=" px-3 rounded">
-            < EventsList selectedDate = {selectedDate} events={events} openModal={openModal}/>
+            <EventsList
+              selectedDate={selectedDate}
+              events={events}
+              openModal={openModal}
+              setEditingEvent={setEditingEvent}
+            />
           </div>
         </div>
       </div>

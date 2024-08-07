@@ -1,16 +1,25 @@
-import React from 'react';
+import React from "react";
 
-const EventsList = ({ selectedDate, events, openModal }) => {
+const EventsList = ({ selectedDate, events, openModal, setEditingEvent }) => {
   if (!selectedDate) {
-    return <div className='text-xl font-bold text-center h-full flex items-center'>No events selected</div>;
+    return (
+      <div className="text-xl font-bold text-center h-full flex items-center">
+        No events selected
+      </div>
+    );
   }
 
   const selectedDateEvents = events.filter(
-    event => new Date(event.date).toDateString() === selectedDate.toDateString()
+    (event) =>
+      new Date(event.date).toDateString() === selectedDate.toDateString()
   );
 
-  const day = selectedDate.toLocaleString('default', { weekday: 'short' });
-  const date = selectedDate.toLocaleString('default', { day: 'numeric', month: 'long', year: 'numeric' });
+  const day = selectedDate.toLocaleString("default", { weekday: "short" });
+  const date = selectedDate.toLocaleString("default", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
 
   return (
     <div className="p-4 relative h-full">
@@ -20,11 +29,17 @@ const EventsList = ({ selectedDate, events, openModal }) => {
       </div>
       {selectedDateEvents.length > 0 ? (
         <ul>
-          {selectedDateEvents.map(event => (
-            <li key={event.id} className="border p-2 rounded mb-2">
+          {selectedDateEvents.map((event) => (
+            <li
+              onClick={() => setEditingEvent(event)}
+              key={event.id}
+              className="border p-2 rounded mb-2"
+            >
               <h3 className="text-lg font-semibold">{event.title}</h3>
               {event.reminder && (
-                <p className="text-sm text-gray-500">Reminder: {new Date(event.reminder).toLocaleString()}</p>
+                <p className="text-sm text-gray-500">
+                  Reminder: {new Date(event.reminder).toLocaleString()}
+                </p>
               )}
             </li>
           ))}

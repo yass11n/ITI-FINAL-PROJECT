@@ -33,16 +33,14 @@
   ],
   "events": [
     {
-      "id": "1",
-      "title": "Event 1",
-      "date": "2023-01-01",
-      "description": "Description for event 1"
+      "id": "1723069022737",
+      "title": "32332",
+      "date": "2024-08-20T21:00:00.000Z"
     },
     {
-      "id": "2",
-      "title": "Event 2",
-      "date": "2023-01-02",
-      "description": "Description for event 2"
+      "title": "mazen",
+      "date": "2024-08-20T21:00:00.000Z",
+      "id": "52b6"
     }
   ]
 }
