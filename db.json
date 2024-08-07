@@ -1,13 +1,13 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "username": "admin",
       "email": "user1@gmail.com",
       "password": "password1"
     },
     {
-      "id": 2,
+      "id": "2",
       "username": "admin2",
       "email": "user2@gmail.com",
       "password": "password2"
@@ -23,17 +23,23 @@
       "username": "fares el 3sab",
       "email": "anayassin688@gmail.com",
       "password": "yassin"
+    },
+    {
+      "id": "c72d",
+      "username": "faresaymann",
+      "email": "faresaymann2020@gmail.com",
+      "password": "fares"
     }
   ],
   "events": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Event 1",
       "date": "2023-01-01",
       "description": "Description for event 1"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "Event 2",
       "date": "2023-01-02",
       "description": "Description for event 2"

@@ -10,10 +10,12 @@ const CalendarHeader = ({ currentMonth, setCurrentMonth }) => {
   };
 
   return (
-    <div className="flex justify-between items-center mb-4">
-      <button onClick={prevMonth}>&lt;</button>
-      <h2 className="text-xl">{currentMonth.toLocaleString('default', { month: 'long' })} {currentMonth.getFullYear()}</h2>
-      <button onClick={nextMonth}>&gt;</button>
+    <div className="flex  justify-between items-center mb-20 mt-4">
+      <button onClick={prevMonth} className=" text-xl font-bold">{'<'}</button>
+      <h2 className="flex-grow text-center text-xl font-bold">
+        {currentMonth.toLocaleString('default', { month: 'long' })} {currentMonth.getFullYear()}
+      </h2>
+      <button onClick={nextMonth} className="text-xl font-bold">{'>'}</button>
     </div>
   );
 };

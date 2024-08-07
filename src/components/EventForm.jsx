@@ -33,12 +33,12 @@ const EventForm = ({ date, addEvent, editEvent, deleteEvent, editingEvent, close
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form  onSubmit={handleSubmit}>
       <div className="mb-4">
         <label className="block text-sm">Event Title</label>
         <input
           type="text"
-          className="w-full border p-2"
+          className="w-full border p-2 text-gray-600"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           required
@@ -48,13 +48,13 @@ const EventForm = ({ date, addEvent, editEvent, deleteEvent, editingEvent, close
         <label className="block text-sm">Reminder (optional)</label>
         <input
           type="datetime-local"
-          className="w-full border p-2"
+          className="w-full border p-2 text-gray-600"
           value={reminder}
           onChange={(e) => setReminder(e.target.value)}
         />
       </div>
       <div className="flex justify-between items-center">
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+        <button type="submit" className="bg-[#273463]  text-white px-4 py-2 rounded">
           {editingEvent ? 'Edit' : 'Add'} Event
         </button>
         {editingEvent && (
