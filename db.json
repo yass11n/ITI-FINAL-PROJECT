@@ -29,18 +29,13 @@
       "username": "faresaymann",
       "email": "faresaymann2020@gmail.com",
       "password": "fares"
-    }
-  ],
-  "events": [
-    {
-      "id": "1723069022737",
-      "title": "32332",
-      "date": "2024-08-20T21:00:00.000Z"
     },
     {
-      "title": "mazen",
-      "date": "2024-08-20T21:00:00.000Z",
-      "id": "52b6"
+      "id": "d66d",
+      "username": "meme",
+      "email": "fuhrer500@gmail.com",
+      "password": "gotowebsite"
     }
-  ]
+  ],
+  "events": []
 }

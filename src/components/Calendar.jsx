@@ -5,12 +5,14 @@ import Modal from "./Modal";
 import EventForm from "./EventForm";
 import CalendarTitle from "./CalendarTitle";
 import EventsList from "./EventsList";
+import Ef from "./Ed";
 
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(null);
   const [events, setEvents] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showModal2, setShowModal2] = useState(false);
 
   const [editingEvent, setEditingEvent] = useState(null);
 
@@ -83,17 +85,47 @@ const Calendar = () => {
     setEvents(events.filter((event) => event.id !== eventId));
   };
 
+
+
+
   const openModal = (date, event = null) => {
     setSelectedDate(date);
     setEditingEvent(event);
     setShowModal(true);
+    
   };
 
+  const openModal2 = (date, event = null,i=0) => {
+    setSelectedDate(date);
+    setEditingEvent(event);
+    setShowModal2(true);
+    return i
+    
+    
+  };
+
+  
   const closeModal = () => {
     setShowModal(false);
     setEditingEvent(null);
   };
 
+  const closeModal2 = () => {
+    setShowModal2(false);
+    setEditingEvent(null);
+  };
+
+
+  const itClick = (e) => {
+
+    if (e.target.parentElement.className=="min-h-screen") {
+      closeModal()
+      closeModal2()
+    }
+    // console.log("kmkmk");
+    
+    
+  };
   return (
     <div className="min-h-screen">
       {/*  CalendarTitle */}
@@ -126,8 +158,11 @@ const Calendar = () => {
                       date.toDateString()
                   )}
                   selectDate={setSelectedDate}
+                  
                 />
+                
               ))}
+              
             </div>
           </div>
 
@@ -137,14 +172,24 @@ const Calendar = () => {
               selectedDate={selectedDate}
               events={events}
               openModal={openModal}
-              setEditingEvent={setEditingEvent}
+              openModal2={openModal2}
+              closeModal1={closeModal}
+              closeModal2={closeModal2}
+              setEditingEvent={editingEvent}
+              setEvents={setEvents}
+              deleteEvent={handleDeleteEvent}
+              editEvent={handleEditEvent}
+              addEvent={handleAddEvent}
+
+              
             />
+            
           </div>
         </div>
       </div>
       {/* model section */}
       {showModal && (
-        <Modal closeModal={closeModal}>
+        <Modal closeModal={closeModal} itClick={itClick}>
           <EventForm
             date={selectedDate}
             addEvent={handleAddEvent}
@@ -152,9 +197,38 @@ const Calendar = () => {
             deleteEvent={handleDeleteEvent}
             editingEvent={editingEvent}
             closeModal={closeModal}
+
+            
           />
         </Modal>
-      )}
+
+          )}
+
+          
+        {showModal2 && (
+        <Modal closeModal={closeModal2} itClick={itClick}>
+          <Ef
+            date={selectedDate}
+            addEvent={handleAddEvent}
+            editEvent={handleEditEvent}
+            deleteEvent={handleDeleteEvent}
+            editingEvent={editingEvent}
+            closeModal={closeModal2}
+            
+            
+            
+
+            
+          />
+        </Modal>
+
+          )}
+          
+          
+      
+
+
+      
     </div>
   );
 };

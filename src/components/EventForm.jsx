@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
-const EventForm = ({ date, addEvent, editEvent, deleteEvent, editingEvent, closeModal }) => {
+
+const EventForm = ({ date, addEvent, editEvent, deleteEvent, editingEvent,closeModal}) => {
   const [title, setTitle] = useState(editingEvent ? editingEvent.title : '');
   const [reminder, setReminder] = useState(editingEvent ? editingEvent.reminder : '');
 
@@ -14,9 +15,11 @@ const EventForm = ({ date, addEvent, editEvent, deleteEvent, editingEvent, close
   }, [editingEvent]);
 
   const handleSubmit = (e) => {
+    
+    
     e.preventDefault();
     const event = {
-      id: editingEvent ? editingEvent.id : new Date().getTime(),
+      id: editingEvent ? editingEvent.id : new Date().getTime()+"",
       title,
       date,
       reminder
@@ -30,7 +33,13 @@ const EventForm = ({ date, addEvent, editEvent, deleteEvent, editingEvent, close
   };
 
   const handleDelete = () => {
+
+    console.log(editEvent);
+    
     deleteEvent(editingEvent.id);
+  
+    
+  
     closeModal();
   };
 
@@ -68,6 +77,7 @@ const EventForm = ({ date, addEvent, editEvent, deleteEvent, editingEvent, close
             Delete
           </button>
         )}
+      
       </div>
     </form>
   );
